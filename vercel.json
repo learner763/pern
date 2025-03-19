@@ -8,9 +8,13 @@
   ],
   "routes": [
     {
+      "src": "/static/(.*)",
+      "dest": "/client/build/static/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "server/index.js"
     }
   ],
-  "buildCommand": "npm run build --prefix client"
+  "buildCommand": "npm install --prefix client && npm run build --prefix client"
 }
