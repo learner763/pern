@@ -14,7 +14,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Hi!
+          PERN Stack App
         </a>
       </header>
     </div>
