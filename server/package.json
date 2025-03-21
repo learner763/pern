@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "cd ../client && npm run build",
     "start": "node index.js"
-    
   },
   "author": "",
   "type": "module",
@@ -15,7 +14,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "pg": "^8.14.1",
+    "pkg": "^5.8.1"
   }
 }
-

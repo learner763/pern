@@ -1,22 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function App() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:8080/api/data', {
+        name,
+        email,
+      });
+      console.log(response.data); // Handle the response
+    } catch (error) {
+      console.error('Error making POST request:', error);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        
-        <a
-
-          className="App-link"
-          href="https://dev.to/techcheck/creating-a-react-node-and-express-app-1ieg"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          PERN Stack ahahah
-        </a>
-      </header>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }
