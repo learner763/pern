@@ -37,12 +37,24 @@ const pool = new pkg.Pool({
 app.listen(8080, () => {
     console.log('Server is running on http://localhost:8080');
 });
-app.post('/', (req, res) => {
-  pool.query("select * from public.b;", (err, results) => {
+// POST route for /api/data
+app.post('/api/data', (req, res) => {
+  pool.query("SELECT * FROM public.b;", (err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
     }
     res.json(results.rows);
-  }); // Close the pool.query callback properly
+  });
+});
+
+// GET route for /api/data
+app.get('/api/data', (req, res) => {
+  pool.query("SELECT * FROM public.b;", (err, results) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json(results.rows);
+  });
 }); // Close the app.post route handler properly
