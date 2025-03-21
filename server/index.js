@@ -37,7 +37,7 @@ const pool = new pkg.Pool({
 app.listen(8080, () => {
     console.log('Server is running on http://localhost:8080');
 });
-app.post('/api/data', (req, res) => {
+app.get('/api/data', (req, res) => {
   pool.query("select * from public.b;", (err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
