@@ -5,21 +5,27 @@ function App() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:8080/api/data', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, email }),
+    fetch('http://localhost:8080/api/data', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data); // Handle the response
+      })
+      .catch((error) => {
+        console.error('Error making POST request:', error);
       });
-      const data = await response.json();
-      console.log(data); // Handle the response
-    } catch (error) {
-      console.error('Error making POST request:', error);
-    }
   };
 
   return (
