@@ -16,5 +16,5 @@
       "dest": "server/index.js"
     }
   ],
-  "buildCommand": "npm install --prefix client && npm run build --prefix client"
+  "buildCommand": " npm run build --prefix client"
 }
