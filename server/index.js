@@ -49,13 +49,3 @@ app.post('/api/data', (req, res) => {
   });
 });
 
-// GET route for /api/data
-app.get('/api/data', (req, res) => {
-  pool.query("SELECT * FROM public.b;", (err, results) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-      return;
-    }
-    res.json(results.rows);
-  });
-}); // Close the app.post route handler properly
