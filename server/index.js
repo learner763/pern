@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import pkg from "pg";
 const app = express();
+import cors from 'cors';
 
 // Resolve __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -11,7 +12,7 @@ const __dirname = path.dirname(__filename);
 // Serve static files from the React app's build folder
 const buildPath = path.join(__dirname, '../client/build');
 app.use(express.static(buildPath));
-
+app.use(cors());
 // API route (optional, for backend functionality)
 app.get('/api', (req, res) => {
     res.json({ message: 'Hello from the server!' });
