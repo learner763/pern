@@ -15,6 +15,10 @@
       "src": "/(.*)",
       "dest": "server/index.js"
     }
+    {
+      "src": "/api/(.*)",
+      "dest": "server/index.js"
+    }
   ],
   "buildCommand": " npm run build --prefix client"
 }
