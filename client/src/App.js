@@ -8,19 +8,16 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/api/data', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, email }),
+      const response = await axios.post('http://localhost:8080/api/data', {
+        name,
+        email,
       });
-      const data = await response.json();
-      console.log(data); // Handle the response
+      console.log(response.data); // Handle the response
     } catch (error) {
       console.error('Error making POST request:', error);
     }
   };
+
   return (
     <div className="App">
       <form onSubmit={handleSubmit}>
