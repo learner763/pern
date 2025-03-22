@@ -4,14 +4,11 @@ import axios from 'axios';
 function App() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const API_URL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://pern-liard.vercel.app/data' // Change this!
-    : 'http://localhost:8080/data';
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(API_URL, {
+      const response = await axios.post('/data', {
         name,
         email,
       });
