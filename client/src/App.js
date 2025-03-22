@@ -8,7 +8,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/data', {
+      const response = await axios.post('https://pern-liard.vercel.app/api/data', {
         name,
         email,
       });
