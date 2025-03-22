@@ -39,7 +39,7 @@ app.listen(8080, () => {
     console.log('Server is running on http://localhost:8080');
 });
 // POST route for /api/data
-app.post('/api/data', (req, res) => {
+app.post('/data', (req, res) => {
   pool.query("SELECT * FROM public.b;", (err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });

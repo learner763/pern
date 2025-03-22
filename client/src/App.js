@@ -8,7 +8,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/data', {
+      const response = await axios.post('/data', {
         name,
         email,
       });
