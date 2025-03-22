@@ -12,7 +12,6 @@ function App() {
         name,
         email,
       });
-      console.log(11)
       console.log(response.data); // Handle the response
     } catch (error) {
       console.error('Error making POST request:', error);
