@@ -40,7 +40,7 @@ app.listen(8080, () => {
 });
 // POST route for /api/data
 app.post('/data', (req, res) => {
-  console.log(req.body);
+  console.log(1);
   /*pool.query("SELECT * FROM public.b;", (err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
