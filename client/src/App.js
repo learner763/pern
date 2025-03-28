@@ -8,7 +8,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/data', {
+      const response = await axios.post('https://react-express-9vtwql4mu-umers-projects-236f87ff.vercel.app/data', {
         name,
         email,
       });
