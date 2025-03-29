@@ -11,18 +11,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Serve static files from the React app's build folder
-const buildPath = path.join(__dirname, '../client/build');
+const buildPath = path.join(__dirname, '../build');
 app.use(express.static(buildPath));
 
 // Configure CORS
-app.use(cors({
-    origin: 'https://react-express-gamma.vercel.app', // Allow only frontend
-    methods: 'GET,POST,PUT,DELETE',
-    allowedHeaders: 'Content-Type',
-}));
+
 
 // Handle preflight requests
-app.options('*', cors());
 
 // Middleware to parse JSON
 app.use(express.json());
@@ -51,18 +46,18 @@ pool.connect((err) => {
 });
 
 // POST route for /api/data
-app.post('/data', (req, res) => {
-    console.log('Received POST request to /data');
-    res.json({ message: 'POST request received' });
-    /*
-    pool.query('SELECT * FROM public.b;', (err, results) => {
+app.post("/login", (req, res) => {
+    const { email, password } = req.body;
+    console.log(email);
+    console.log(password);
+    pool.query("INSERT INTO public.\"Users\" (\"Email\",\"Password\") VALUES ($1, $2)", [email,password], (err, results) => {
         if (err) {
-            res.status(500).json({ error: err.message });
-            return;
+          res.status(500).json({ error: err.message });
+          return;
         }
-        res.json(results.rows);
-    });
-    */
+        res.json({ message: "Data inserted successfully" });
+      });
+      
 });
 
 // Start the server
