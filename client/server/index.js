@@ -5,7 +5,13 @@ import pkg from 'pg';
 import cors from 'cors';
 
 const app = express();
-app.use(cors())
+app.use(cors(
+    {
+        origin: ['https://react-express-ten.vercel.app/'],
+        methods: ['GET', 'POST'],
+        credentials: true
+    }
+))
 // Resolve __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,7 +51,7 @@ pool.connect((err) => {
 });
 
 // POST route for /api/data
-app.post("/server/login", (req, res) => {
+app.post("/login", (req, res) => {
     const { email, password } = req.body;
     console.log(email);
     console.log(password);
