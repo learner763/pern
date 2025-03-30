@@ -9,7 +9,7 @@ const app = express();
 // Resolve __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
+app.use(cors())
 // Serve static files from the React app's build folder
 const buildPath = path.join(__dirname, '../build');
 app.use(express.static(buildPath));
