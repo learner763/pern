@@ -5,7 +5,7 @@ import pkg from 'pg';
 import cors from 'cors';
 
 const app = express();
-
+app.use(cors())
 // Resolve __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
