@@ -28,7 +28,7 @@ app.use(express.static(buildPath));
 app.use(express.json());
 
 // API route
-app.get('/api', (req, res) => {
+app.get('/api/hello', (req, res) => {
     res.json({ message: 'Hello from the server!' });
 });
 
