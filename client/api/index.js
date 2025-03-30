@@ -51,7 +51,7 @@ pool.connect((err) => {
 });
 
 // POST route for /api/data
-app.post("/login", (req, res) => {
+app.post("/api/login", (req, res) => {
     const { email, password } = req.body;
     console.log(email);
     console.log(password);
