@@ -6,48 +6,44 @@ function App() {
   const [password, setpassword] = useState('');
   const [lt, setlt] = useState('Sign Up');
   const [bt, setbt] = useState('Log In');
-
+  const [disp,setdisp]=useState("none");
+  const [text,settext]=useState("");
   const [visibility,setvisibility]=useState("block");
   const [msg,cmsg]=useState("New to this app?");
-  //function handleSubmit()  {
 
 
-  function verifyEmail (email,password)  {
-      const url = `https://emailvalidation.abstractapi.com/v1/?api_key=e235e86385f44282807f8b5c1a7e05a0&email=${email}`;
-      console.log(email)
-      fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data); // Log the full response for debugging
-  
-        if (data.is_valid_format.value && data.deliverability === 'DELIVERABLE' && password.length>0) {
-          console.log('Email exists and is deliverable');
-          post(email,password);
-        } else {
-          console.log('Email does not exist or is not deliverable');
-          alert("Enter a valid Email Address!");
-
-        }
-      })
-      .catch(error => console.error(error));
-
-      } ;
-  
-
-      async function post(email, password) {
+        async function post(email, password,bt) {
         try {
           const response = await axios.post('/login', {
             email: email,
             password: password,
+            bt: bt
           });
-      
-          console.log('Data:', response.data); // Log the parsed JSON data
-        } catch (error) {
+          
+          console.log(response.data);
+          if(bt=="Log In")
+            if (response.data.length === 0) {
+              setdisp("block");
+              settext("Invalid Credentials!");
+            }
+            else if(response.data[0].email===email && response.data[0].password===password){
+              setdisp("none");
+              settext("");
+            }
+          else if(bt=="Sign Up")
+            console.log(response.success);
+            console.log(response.data.success);
+            if (response.data.success===false) {
+              setdisp("block");
+              settext(`${email} already exists!`);
+            }
+            else if(response.data.success===true){
+              setdisp("none");
+              settext("");
+            }
+        } 
+        
+        catch (error) {
           console.error('Error:', error.response ? error.response.data : error.message); // Log any errors
         }
       }
@@ -60,9 +56,9 @@ function App() {
   return (
     <div className="App" >
         <img id="bg" src="bg.png" alt="Background" />
-        <label >Email:</label>
+        <label >Username:</label>
        <input
-          type="email"
+          type="text"
           value={email}
           onChange={(e) => setemail(e.target.value)}
         />
@@ -73,9 +69,9 @@ function App() {
           value={password}
           onChange={(e) => setpassword(e.target.value)}
         />
-        
+        <label style={{display:disp}}>{text}</label>
         <button style={{display:visibility}}>Forgot Password?</button>
-        <button onClick={() => verifyEmail(email,password)}>{bt}</button> 
+        <button onClick={() => post(email,password,bt)}>{bt}</button> 
         <label  id="t">{msg}<label
           id="s"
           onClick={() => {

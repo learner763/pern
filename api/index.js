@@ -52,16 +52,30 @@ pool.connect((err) => {
 
 // POST route for /api/data
 app.post("/login", (req, res) => {
-    const { email, password } = req.body;
+    const { email, password,bt } = req.body;
     console.log(email);
     console.log(password);
-    pool.query("INSERT INTO public.\"Users\" (\"Email\",\"Password\") VALUES ($1, $2)", [email,password], (err, results) => {
-        if (err) {
-          res.status(500).json({ error: err.message });
-          return;
-        }
-        res.json({ message: "Data inserted successfully" });
-      });
+
+    if(bt=="Log In")    
+        pool.query("select * from public.users where email=$1 and password=$2", [email,password], (err, results) => {
+            if (err) {}
+            else res.json(results.rows);
+            
+        });
+
+    else if(bt=="Sign Up")
+        pool.query("select * from public.users where email=$1", [email], (err, results) => {
+            if (err) {}
+            console.log(results.rows);
+            if(results.rows.length>0){res.json({success:false});}
+            else{
+                pool.query("insert into public.users(email,password) values($1,$2)", [email,password], (err, results) => {
+                    if (err) {}
+                    else res.json({success:true});
+                });
+            }
+        });
+
       
 });
 
