@@ -41,7 +41,7 @@ function App() {
 
       async function post(email, password) {
         try {
-          const response = await axios.post('/api/login', {
+          const response = await axios.post('/login', {
             email: email,
             password: password,
           });
