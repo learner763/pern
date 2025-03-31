@@ -78,7 +78,15 @@ app.post("/login", (req, res) => {
 
       
 });
+app.post("/forpass", (req, res) => {
+    const { email } = req.body;
+    console.log(email);
 
+    pool.query("select * from public.users where email=$1", [email], (err, results) => {
+        if (err) {}
+        else res.json(results.rows);
+    });
+});
 // Start the server
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
