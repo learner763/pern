@@ -22,7 +22,7 @@ function App() {
           });
           
           console.log(response.data);
-          if(bt=="Log In")
+          if(bt==="Log In")
             if (response.data.length === 0) {
               setdisp("block");
               settext("Invalid Credentials!");
@@ -31,7 +31,7 @@ function App() {
               setdisp("none");
               settext("");
             }
-          else if(bt=="Sign Up")
+          else if(bt==="Sign Up")
             console.log(response.success);
             console.log(response.data.success);
             if (response.data.success===false) {
