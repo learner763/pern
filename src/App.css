@@ -1,20 +1,15 @@
 body{
   margin: 0;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  height: 100vh;
-  background-color: darkgreen;
+  scroll-behavior: smooth;
 }
 .App{
-  border-radius: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: lightgreen;
-  width: 300px;
-  
+  background-color:lightgreen; 
+  width: auto;
+  height: 100vh;
 
 }
 #bg{

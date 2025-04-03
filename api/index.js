@@ -28,12 +28,15 @@ app.use(express.static(buildPath));
 app.use(express.json());
 
 // API route
-app.get('/api/hello', (req, res) => {
-    res.json({ message: 'Hello from the server!' });
+app.get('/accounts', (req, res) => {
+    pool.query('SELECT email,name,bio FROM public.users', (err, results) => {
+        if (err) {}
+        else res.json(results.rows);
+    });
 });
 
 // Catch-all route to serve React's index.html
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
 });
 
@@ -53,8 +56,7 @@ pool.connect((err) => {
 // POST route for /api/data
 app.post("/login", (req, res) => {
     const { email, password,bt } = req.body;
-    console.log(email);
-    console.log(password);
+    
 
     if(bt=="Log In")    
         pool.query("select * from public.users where email=$1 and password=$2", [email,password], (err, results) => {
@@ -70,7 +72,9 @@ app.post("/login", (req, res) => {
             if(results.rows.length>0){res.json({success:false});}
             else{
                 pool.query("insert into public.users(email,password) values($1,$2)", [email,password], (err, results) => {
-                    if (err) {}
+                    if (err) {
+                        return res.status(500).send('Database error');
+                    }
                     else res.json({success:true});
                 });
             }
@@ -78,6 +82,23 @@ app.post("/login", (req, res) => {
 
       
 });
+app.post("/personal", (req, res) => {
+    const { username, name,bio } = req.body;
+    pool.query("update public.users set name=$1,bio=$2 where email=$3", [name,bio,username], (err, results) => {   
+        if (err) {console.log(4)}
+        else res.json({success:true}); 
+    });
+});
+app.post("/save_info", (req, res) => {
+    const { previous,username, name,bio } = req.body;
+    
+
+    pool.query("update public.users set name=$1,bio=$2,email=$3 where email=$4", [name,bio,username,previous], (err, results) => {   
+        if (err) {console.log(4)}
+        else res.json({success:true}); 
+    });
+});
+
 app.post("/forpass", (req, res) => {
     const { email } = req.body;
     console.log(email);

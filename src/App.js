@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import axios from 'axios';
+import axios from 'axios'; 
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+
 function App() {
   const [email, setemail] = useState('');
   const [email1, setemail1] = useState('');
@@ -12,17 +14,21 @@ function App() {
   const [visibility,setvisibility]=useState("block");
   const [msg,cmsg]=useState("New to this app?");
   const [f,df]=useState("none");
-
+  const nav=useNavigate();
         async function post(email, password,bt) {
+        if (email.length>0 && password.length>0)
         try {
+          
           const response = await axios.post('/login', {
             email: email,
             password: password,
             bt: bt
           });
-          
-          console.log(response.data);
+          df("none");
+          console.log(response)
           if(bt==="Log In")
+          {
+            setvisibility("block");
             if (response.data.length === 0) {
               setdisp("block");
               settext("Invalid Credentials!");
@@ -30,10 +36,13 @@ function App() {
             else if(response.data[0].email===email && response.data[0].password===password){
               setdisp("none");
               settext("");
+              localStorage.setItem("email",email);
+              nav('/home');
             }
+          }
           else if(bt==="Sign Up")
-            console.log(response.success);
-            console.log(response.data.success);
+          {
+            
             if (response.data.success===false) {
               setdisp("block");
               settext(`"${email}" already exists!`);
@@ -41,7 +50,11 @@ function App() {
             else if(response.data.success===true){
               setdisp("none");
               settext("");
+              localStorage.setItem("email",email);
+              nav('/profile');
+
             }
+          }
         } 
         
         catch (error) {
@@ -83,7 +96,7 @@ function App() {
 
     })})
   return (
-    <div className="App" >
+      <div className="App" >
         <img id="bg" src="bg.png" alt="Background" />
         <label >Username*</label>
        <input
@@ -130,8 +143,11 @@ function App() {
           {lt}
         </label></label>
       
-    </div>
+      </div>
+
+    
   );
 }
+
 
 export default App;
