@@ -7,10 +7,15 @@ function Home()
 {
     const [info, setinfo] = useState([]);
     let username = localStorage.getItem("email");
-    
+    const nav2=useNavigate();
     const [up_user,setup_user]=useState('');
     const [up_name,setup_name]=useState('');
     const [up_bio,setup_bio]=useState('');
+    const [part1,setpart1]=useState('flex');
+    const [part2,setpart2]=useState('none');
+    const [part3,setpart3]=useState('none');
+    const [pass,setpass]=useState('')
+    const [bg,setbg]=useState('white')
     let w=-1;
     function update_info(up_user,up_name,up_bio)
     {
@@ -30,6 +35,18 @@ function Home()
             }
         });
     }
+    function update_settings(pass,bg)
+    {
+        fetch('/save_settings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username: username, password: pass, bg: bg }),
+        })
+        .then(response => response.json())
+        
+    }
     useEffect(() => {
         fetch("/accounts")
         .then(response => response.json())
@@ -43,7 +60,10 @@ function Home()
                         setup_user(data[i].email);
                         setup_name(data[i].name);
                         setup_bio(data[i].bio);
-                        console.log(username)
+                        setpass(data[i].password);
+                        setbg(data[i].bg);
+                        console.log(data[i].bg)
+                        console.log(bg)
                         
                     }
                 }
@@ -52,12 +72,12 @@ function Home()
                     accounts.push(data[i].name);
                     accounts.push(data[i].bio);
                     
+                    
                 }
                 setinfo(accounts);
 
             }
         );
-        
         let icons=document.querySelectorAll(".home11 label");
         for(let i=0;i<icons.length;i++)
         {
@@ -69,6 +89,9 @@ function Home()
                 }   
                 icons[i].style.backgroundColor='darkgreen';
                 icons[i].style.color='white';
+                if(i==0){setpart1('flex');setpart2('none');setpart3('none');}
+                if(i==1){setpart1('none');setpart2('flex');setpart3('none');}
+                if(i==2){setpart1('none');setpart2('none');setpart3('flex');}
             });
         }
         
@@ -79,16 +102,16 @@ function Home()
                 <label>Whatsupp</label>
                 <label><i class='fas fa-user'></i>{up_user}</label>
             </div>
-            <div className='home1'>
+            <div className='home1' style={{backgroundColor:bg}} onChange={(e)=>setbg(e.target.value)}>
                 <div className='home11'>
                     <label><i class='fas fa-comment-dots'></i>Chats</label>
                     <label><i class='fas fa-user'></i>Profile</label>
                     <label><i class='fas fa-cog'></i>Settings</label>
-                    <label><i class='fas fa-user-plus'></i>Add Account</label>
+                    <label onClick={()=>nav2('/')} ><i class='fas fa-user-plus'></i>Add Account</label>
 
                 </div>
                 <div className='home12'>
-                    <div className='home121'>
+                    <div className='part2' style={{display:part2}} >
                         <i style={{alignSelf:'center'}} class='fas fa-user'></i>
                         <label>Username</label>
                         <input onChange={(e)=>setup_user(e.target.value)} value={up_user} style={{alignSelf:'end'}}></input>
@@ -99,8 +122,28 @@ function Home()
                         <button onClick={()=>update_info(up_user,up_name,up_bio)} id="save">Save</button>
                     </div>
                     
-                    
+                    <div className='part3' style={{display:part3}} >
+                        <i style={{alignSelf:'center'}} class='fas fa-user'></i>
+                        <label>Change Password</label>
+                        <input onChange={(e)=>setpass(e.target.value)} value={pass} style={{alignSelf:'end'}}></input>
+                        <label>Background Theme</label>
+                        <select value={bg} style={{ alignSelf:'end'}} onChange={(e)=>setbg(e.target.value)} >
+                            <option style={{color:"white"}} value="white">White</option>
+                            <option style={{color:"black"}} value="black">Black</option>
+                            <option style={{color:"red"}} value="red">Red</option>
+                            <option style={{color:"yellowgreen"}} value="yellowgreen">YellowGreen</option>
+                            <option style={{color:"blue"}} value="blue">Blue</option>
+                            <option style={{color:"lime"}} value="lime">Lime</option>
+                            <option style={{color:"goldenrod"}} value="goldenrod">Goldenrod</option>
+                            <option style={{color:"purple"}} value="purple">Purple</option>
+                            <option style={{color:"orange"}} value="orange">Orange</option>
+                            <option style={{color:"pink"}} value="pink">Pink</option>
+
+                        </select>
+                        <button onClick={()=>update_settings(pass,bg)} id="save">Save</button>
+                    </div>
                 </div>
+                
                 <div className='home13' >
                     <span id="youmayknow" style={{fontWeight:'bold', display:'flex', justifySelf:'center', alignSelf:'center',color:'darkgreen'}}>People you may know!</span>
                     {info.reverse().map((a, index) => {

@@ -1,11 +1,10 @@
 .home{
     display: flex;
     flex-direction: column;
-}
-.home{
-    display: flex;
     background-color: darkgreen;
+
 }
+
 .top label
 {
     font-weight: bold;
@@ -15,7 +14,6 @@
     color: white;
 
 }
-
 .top
 {
     display: flex;
@@ -113,31 +111,32 @@
     font-size: 25px;
     
 }
-.home121{
+.part2,.part3{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
     overflow: scroll;
 }
-.home121 i, .home121 button, .home121 label, .home121 input{
+.part2 i, .part2 button, .part2 label, .part2 input,
+.part3 i, .part3 button, .part3 label, .part3 input,.part3 select{
     color: darkgreen;
     margin: 30px;
 }
-.home121 i{
+.part2 i,.part3 i{
     font-size: 60px;
 }
-.home121 label{
+.part2 label,.part3 label{
     font-size: 25px;
     font-weight: bolder;
 }
-.home121 input{
+.part2 input,.part3 input,.part3 select{
     font-size: 25px;
     border: darkgreen solid;
     border-width: 1px 0px 1px 0px;
     border-radius: 20px;
 }
-.home121 button{
+.part2 button,.part3 button{
     background-color: lightgreen;
     color: darkgreen;
     cursor: pointer;
@@ -148,4 +147,6 @@
     font-size: 20px;
 }
 
-
+.part3 select option{
+    font-Weight:bold;
+}

@@ -29,7 +29,7 @@ app.use(express.json());
 
 // API route
 app.get('/accounts', (req, res) => {
-    pool.query('SELECT email,name,bio FROM public.users', (err, results) => {
+    pool.query('SELECT email,name,bio,password,bg FROM public.users', (err, results) => {
         if (err) {}
         else res.json(results.rows);
     });
@@ -98,7 +98,15 @@ app.post("/save_info", (req, res) => {
         else res.json({success:true}); 
     });
 });
+app.post("/save_settings", (req, res) => {
+    const { username,password, bg } = req.body;
+    
 
+    pool.query("update public.users set password=$1,bg=$2 where email=$3", [password,bg,username], (err, results) => {   
+        if (err) {console.log(4)}
+        else res.json({success:true}); 
+    });
+});
 app.post("/forpass", (req, res) => {
     const { email } = req.body;
     console.log(email);
