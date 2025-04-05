@@ -100,7 +100,7 @@ function Home()
         <div className='home'>
             <div className='top'>
                 <label>Whatsupp</label>
-                <label><i class='fas fa-user'></i>{up_user}</label>
+                <label><i class='fas fa-user'></i>{up_name}</label>
             </div>
             <div className='home1' style={{backgroundColor:bg}} onChange={(e)=>setbg(e.target.value)}>
                 <div className='home11'>
@@ -111,6 +111,11 @@ function Home()
 
                 </div>
                 <div className='home12'>
+
+                    <div className='part1' style={{display:part1}}>
+                        ahah
+                    </div>
+
                     <div className='part2' style={{display:part2}} >
                         <i style={{alignSelf:'center'}} class='fas fa-user'></i>
                         <label>Username</label>
@@ -153,7 +158,7 @@ function Home()
                                 <div className='userinfo' key={index}> 
                                     <i className='fas fa-user'></i> 
                                     <span>{info[info.indexOf(a) + w]}</span> 
-                                    <span>{info[info.indexOf(a) + w + 1]}</span>
+                                    <span style={{fontWeight:'normal'}}>{info[info.indexOf(a) + w + 1]}</span>
                                     <button><i className='fas fa-people-arrows'></i>Connect</button>
                                 </div>
                             );
