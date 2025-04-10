@@ -103,7 +103,7 @@ function Home()
                 <label>Whatsupp</label>
                 <label><i class='fas fa-user'></i>{up_name}</label>
             </div>
-            <div className='home1' style={{backgroundColor:bgr}} onChange={(e)=>setpass(e.target.value)}>
+            <div className='home1' style={{backgroundColor:bgr}} onChange={(e)=>setbg(e.target.value)}>
                 <div className='home11'>
                     <label><i class='fas fa-comment-dots'></i>Chats</label>
                     <label><i class='fas fa-user'></i>Profile</label>
