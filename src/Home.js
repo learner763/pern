@@ -63,7 +63,7 @@ function Home()
                         setpass(data[i].password);
                         setbg(data[i].bg);
                         console.log(data[i].bg)
-                        console.log(bg)
+                        console.log(bgr)
                         
                     }
                 }
@@ -132,7 +132,7 @@ function Home()
                         <label>Change Password</label>
                         <input onChange={(e)=>setpass(e.target.value)} value={pass} style={{alignSelf:'end'}}></input>
                         <label>Background Theme</label>
-                        <select value={bg} style={{ alignSelf:'end'}} onChange={(e)=>setbg(e.target.value)} >
+                        <select value={bgr} style={{ alignSelf:'end'}} onChange={(e)=>setbg(e.target.value)} >
                             <option style={{color:"white"}} value="white">White</option>
                             <option style={{color:"black"}} value="black">Black</option>
                             <option style={{color:"red"}} value="red">Red</option>
