@@ -145,7 +145,7 @@ function Home()
                             <option style={{color:"pink"}} value="pink">Pink</option>
 
                         </select>
-                        <button onClick={()=>update_settings(pass,bg)} id="save">Save</button>
+                        <button onClick={()=>update_settings(pass,bgr)} id="save">Save</button>
                     </div>
                 </div>
                 
