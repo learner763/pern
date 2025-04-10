@@ -20,7 +20,6 @@ function Home() {
   const [part3, setpart3] = useState("none");
   const [pass, setpass] = useState("");
   const [bg, setbg] = useState("white");
-  let w = -1;
   function update_info(up_user, up_name, up_bio) {
     fetch("/save_info", {
       method: "POST",
@@ -172,7 +171,7 @@ function Home() {
             <select
               value={bg}
               style={{ alignSelf: "end" }}
-              onChange={(e) => setbg(e.target.value)}
+              onChange={(b) => setbg(b.target.value)}
             >
               <option style={{ color: "white" }} value="white">
                 White
@@ -231,7 +230,7 @@ function Home() {
                   <i className="fas fa-user"></i>
                   <span>{info[info.indexOf(a) + info.indexOf(a)]}</span>
                   <span style={{ fontWeight: "normal" }}>
-                    {info[info.indexOf(a) + info.indexOf(a)+1]}
+                    {info[info.indexOf(a) + info.indexOf(a) + 1]}
                   </span>
                   <button>
                     <i className="fas fa-people-arrows"></i>Connect
