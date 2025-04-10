@@ -16,7 +16,6 @@ function Home()
     const [part3,setpart3]=useState('none');
     const [pass,setpass]=useState('')
     const [bgr,setbg]=useState('white')
-    const [s,set]=useState('')
 
     let w=-1;
     function update_info(up_user,up_name,up_bio)
