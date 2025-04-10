@@ -15,7 +15,7 @@ function Home()
     const [part2,setpart2]=useState('none');
     const [part3,setpart3]=useState('none');
     const [pass,setpass]=useState('')
-    const [bg,setbg]=useState('white')
+    const [bgr,setbg]=useState('white')
     let w=-1;
     function update_info(up_user,up_name,up_bio)
     {
@@ -102,7 +102,7 @@ function Home()
                 <label>Whatsupp</label>
                 <label><i class='fas fa-user'></i>{up_name}</label>
             </div>
-            <div className='home1' style={{backgroundColor:bg}} onChange={(e)=>setbg(e.target.value)}>
+            <div className='home1' style={{backgroundColor:bgr}} onChange={(e)=>setbg(e.target.value)}>
                 <div className='home11'>
                     <label><i class='fas fa-comment-dots'></i>Chats</label>
                     <label><i class='fas fa-user'></i>Profile</label>
