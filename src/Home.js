@@ -134,7 +134,7 @@ function Home()
                         <input onChange={(e)=>setpass(e.target.value)} value={pass} style={{alignSelf:'end'}}></input>
                         <label>Background Theme</label>
                         <select value={bgr} style={{ alignSelf:'end'}} onChange={(e)=>setbg(e.target.value)} >
-                            <option style={{color:"white"}} value="white">White</option>
+                            <option style={{color:"white"}} value="white">Whitsdfe</option>
                             <option style={{color:"black"}} value="black">Black</option>
                             <option style={{color:"red"}} value="red">Red</option>
                             <option style={{color:"yellowgreen"}} value="yellowgreen">YellowGreen</option>
