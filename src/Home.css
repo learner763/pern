@@ -166,8 +166,8 @@
 }
 #profile_name{
     align-self: center;
-    border-width: .5px;
-    border: darkgreen solid;
+    background-color: lightgreen;
+    color: darkgreen;
     width: 100%;
     text-align: center;
     display:none;
