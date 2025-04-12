@@ -150,3 +150,25 @@
 .part3 select option{
     font-Weight:bold;
 }
+.part1{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+
+}
+.part1 label{
+    font-weight: bold;
+    font-size: 25px;
+}
+#connect_msg {
+    align-self: center;
+}
+#profile_name{
+    align-self: center;
+    border-width: .5px;
+    border: darkgreen solid;
+    width: 100%;
+    text-align: center;
+    display:none;
+}

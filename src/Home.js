@@ -97,6 +97,22 @@ function Home()
         }
         
     }, []);
+    useEffect(() => {
+        let connect_msg=document.getElementById("connect_msg");
+        let profile_name=document.getElementById("profile_name");
+        let connect_buttons=document.getElementsByClassName("connect_buttons");
+        let connect_people=document.getElementsByClassName("connect_people");
+        console.log(connect_people.length)
+        console.log(connect_buttons.length)
+        for(let i=0;i<connect_buttons.length;i++)
+        {
+            connect_buttons[i].addEventListener('click',()=>{
+                profile_name.innerHTML=connect_people[i].innerHTML;
+                profile_name.style.display="block";
+                connect_msg.style.display='none';
+            });
+        }
+    }, [info]);
     return(
         <div className='home'>
             <div className='top'>
@@ -114,7 +130,8 @@ function Home()
                 <div className='home12'>
 
                     <div className='part1' style={{display:part1}}>
-                        ahah
+                        <label id="connect_msg"><i class="fas fa-people-arrows"></i> Start connecting with people.</label>
+                        <label id="profile_name"></label>
                     </div>
 
                     <div className='part2' style={{display:part2}} >
@@ -158,9 +175,9 @@ function Home()
                             return (
                                 <div className='userinfo' key={index}> 
                                     <i className='fas fa-user'></i> 
-                                    <span>{info[info.indexOf(a) + w]}</span> 
+                                    <span className='connect_people'>{info[info.indexOf(a) + w]}</span> 
                                     <span style={{fontWeight:'normal'}}>{info[info.indexOf(a) + w + 1]}</span>
-                                    <button><i className='fas fa-people-arrows'></i>Connect</button>
+                                    <button className='connect_buttons' ><i className='fas fa-people-arrows'></i>Connect</button>
                                 </div>
                             );
                         }
