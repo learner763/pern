@@ -172,6 +172,7 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-end;
-    margin-bottom: 30px;
+    bottom:0;
+    position: fixed;
     cursor: pointer;
 }
