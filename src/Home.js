@@ -16,6 +16,7 @@ function Home()
     const [part3,setpart3]=useState('none');
     const [pass,setpass]=useState('')
     const [bgr,setbg]=useState('white')
+    const [disp,setdisp]=useState("none")
 
     let w=-1;
     function update_info(up_user,up_name,up_bio)
@@ -108,7 +109,7 @@ function Home()
         {
             connect_buttons[i].addEventListener('click',()=>{
                 profile_name.innerHTML=connect_people[i].innerHTML;
-                profile_name.style.display="block";
+                setdisp("block");
                 connect_msg.style.display='none';
             });
         }
@@ -131,9 +132,13 @@ function Home()
 
                     <div className='part1' style={{display:part1}}>
                         <label id="connect_msg"><i class="fas fa-people-arrows"></i> Start connecting with people.</label>
-                        <label id="profile_name"></label>
+                        <label style={{display:disp}} id="profile_name"></label>
+                        <div className='bottom'>
+                            <input placeholder='Type'></input>
+                            <label style={{backgroundColor:'darkgreen'}}><i style={{color:'white'}} class="fas fa-paper-plane"></i></label>
+                        </div>
                     </div>
-
+                    
                     <div className='part2' style={{display:part2}} >
                         <i style={{alignSelf:'center'}} class='fas fa-user'></i>
                         <label>Username</label>

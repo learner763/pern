@@ -98,8 +98,6 @@
 .userinfo i, .userinfo button, .userinfo span{
     font-weight: bold;
     font-size: 25px;
-    
-
 }
 .home13 span ,.home11,.home13{
     word-wrap: break-word;
@@ -153,22 +151,26 @@
 .part1{
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: space-around;
     align-items: start;
-
+    height: 100vh;
 }
 .part1 label{
     font-weight: bold;
     font-size: 25px;
 }
 #connect_msg {
-    align-self: center;
 }
 #profile_name{
-    align-self: center;
     background-color: lightgreen;
     color: darkgreen;
     width: 100%;
     text-align: center;
-    display:none;
+}
+.bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-bottom: 30px;
 }
