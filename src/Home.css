@@ -151,7 +151,7 @@
 .part1{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: start;
     align-items: start;
     height: 100vh;
 }
@@ -166,13 +166,4 @@
     color: darkgreen;
     width: 100%;
     text-align: center;
-}
-.bottom {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-end;
-    bottom:0;
-    position: fixed;
-    cursor: pointer;
 }

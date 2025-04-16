@@ -133,10 +133,7 @@ function Home()
                     <div className='part1' style={{display:part1}}>
                         <label id="connect_msg"><i class="fas fa-people-arrows"></i> Start connecting with people.</label>
                         <label style={{display:disp}} id="profile_name"></label>
-                        <div className='bottom'>
-                            <input placeholder='Type'></input>
-                            <label style={{backgroundColor:'darkgreen'}}><i style={{color:'white'}} class="fas fa-paper-plane"></i></label>
-                        </div>
+                        <label><input placeholder='Type...' ></input><i class="fas fa-paper-plane"></i></label>
                     </div>
                     
                     <div className='part2' style={{display:part2}} >
