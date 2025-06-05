@@ -1,6 +1,7 @@
 # Whatsupp - Online Chatting App
 ## Application Link
 https://whatsupp-chat.vercel.app/
+
 *Note: This application is in progress!*
 
 ## Components
