@@ -1,4 +1,6 @@
 # Whatsupp - Online Chatting App
 ## Components
 ### Login Page 
-A robust registration system that also helps to recover passwords.
+A Robust Registration System.
+- LogIn and SignUp features.
+- Account Password Recovery.
