@@ -98,22 +98,30 @@ function Home()
         }
         
     }, []);
-    useEffect(() => {
-        let connect_msg=document.getElementById("connect_msg");
-        let profile_name=document.getElementById("profile_name");
-        let connect_buttons=document.getElementsByClassName("connect_buttons");
-        let connect_people=document.getElementsByClassName("connect_people");
-        console.log(connect_people.length)
-        console.log(connect_buttons.length)
-        for(let i=0;i<connect_buttons.length;i++)
-        {
-            connect_buttons[i].addEventListener('click',()=>{
-                profile_name.innerHTML=connect_people[i].innerHTML;
+    useEffect((     ) => {
+        let connect_msg = document.getElementById("connect_msg");
+        let profile_name = document.getElementById("profile_name");
+        let connect_buttons = document.getElementsByClassName("connect_buttons");
+        let connect_people = document.getElementsByClassName("connect_people");
+    
+        console.log(connect_people.length);
+        console.log(connect_buttons.length);
+    
+        for (let i = 0; i < connect_buttons.length; i++) {
+            connect_buttons[i].addEventListener('click', () => {
+                profile_name.innerHTML = connect_people[i].innerHTML;
                 setdisp("block");
-                connect_msg.style.display='none';
+                connect_msg.style.display = 'none';
             });
         }
+    
+        const timer = setTimeout(() => {
+            window.location.reload();
+        }, 7000);
+    
+        return () => clearTimeout(timer);
     }, [info]);
+    
     return(
         <div className='home'>
             <div className='top'>
