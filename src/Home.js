@@ -113,6 +113,7 @@ function Home()
                 connect_msg.style.display='none';
             });
         }
+        window.location.reload();
     }, [info]);
     return(
         <div className='home'>
