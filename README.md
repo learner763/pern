@@ -4,6 +4,14 @@ https://whatsupp-chat.vercel.app/
 
 *Note: This application is in progress!*
 
+## Frameworks 
+-**FrontEnd**- React JS
+-**BackEnd**- Express JS
+-**Database**- Postgresql
+
+
+
+
 ## Components
 ### Login Page 
 - LogIn and SignUp features.
