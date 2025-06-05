@@ -1,4 +1,8 @@
 # Whatsupp - Online Chatting App
+## Application Link
+https://whatsupp-chat.vercel.app/
+*Note: This application is in progress!*
+
 ## Components
 ### Login Page 
 A Robust Registration System.
@@ -12,6 +16,5 @@ A Robust Registration System.
 - **Profile Section:** To update your personal info and account username.
 - **Add Account:** You can sign up to multiple accounts.
 - **Add People:** Shows list of people who have joined this platform and you can connect and start chatting with them.
-### *Note: This application is in progress!*
 
 
