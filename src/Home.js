@@ -111,6 +111,8 @@ function Home()
                 profile_name.innerHTML=connect_people[i].innerHTML;
                 setdisp("block");
                 connect_msg.style.display='none';
+                setpart2('none');
+                setpart3('none');
             });
         }
     }, [info]);
