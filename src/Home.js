@@ -113,6 +113,15 @@ function Home()
                 connect_msg.style.display='none';
                 setpart2('none');
                 setpart3('none');
+                setpart1('flex');
+                let icons=document.querySelectorAll(".home11 label");
+                for(let j=0;j<icons.length;j++)
+                {
+                    icons[j].style.backgroundColor='lightgreen';
+                    icons[j].style.color='darkgreen';
+                }   
+                icons[i].style.backgroundColor='darkgreen';
+                icons[i].style.color='white';
             });
         }
     }, [info]);
