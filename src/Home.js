@@ -178,8 +178,8 @@ function Home()
                             return (
                                 <div className='userinfo' key={index}> 
                                     <i className='fas fa-user'></i>                                    
-                                    <span className='connect_people'>{index + w}</span> 
-                                    <span style={{fontWeight:'normal'}}>{index + w + 1}</span>
+                                    <span className='connect_people'>{info[index + w]}</span> 
+                                    <span style={{fontWeight:'normal'}}>{info[index + w + 1]}</span>
                                     <button className='connect_buttons' ><i className='fas fa-people-arrows'></i>Connect</button>
                                 </div>
                             );
