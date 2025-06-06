@@ -169,7 +169,7 @@ function Home()
                 
                 <div className='home13' >
                     <span id="youmayknow" style={{fontWeight:'bold', display:'flex', justifySelf:'center', alignSelf:'center',color:'darkgreen'}}>People you may know!</span>
-                    {info.reverse().map((a,index) => {
+                    {info.map((a,index) => {
                         if (index < info.length) {
                             return (
                                 <div className='userinfo' key={index}> 
