@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import pkg from 'pg';
 import cors from 'cors';
-import history from 'connect-history-api-fallback';
+
 const app = express();
 app.use(cors(
     {
@@ -18,7 +18,6 @@ const __dirname = path.dirname(__filename);
 // Serve static files from the React app's build folder
 const buildPath = path.join(__dirname, '../build');
 app.use(express.static(buildPath));
-app.use(history());
 
 // Configure CORS
 
