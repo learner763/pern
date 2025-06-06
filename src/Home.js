@@ -142,9 +142,11 @@ function Home()
                 <div className='home12'>
 
                     <div className='part1' style={{display:part1}}>
-                        <label style={{alignSelf:'center',position:'fixed'}} id="connect_msg"><i class="fas fa-people-arrows"></i> Start connecting with people.</label>
-                        <label style={{display:disp,position:'fixed',top:"50px"}} id="profile_name"></label>
-                        <label style={{alignSelf:'center',display:disp,position:'fixed'}}><input style={{width:"200px", border:"black solid 1px",borderRadius:"5px"}} placeholder='Type...' ></input><button style={{borderRadius:"5px",color:"white",backgroundColor:"darkgreen",border:"darkgreen solid 1px",cursor:"pointer"}} >Send</button></label>
+                        <div style={{position:"fixed",top:"70px"}}>
+                            <label style={{alignSelf:'center'}} id="connect_msg"><i class="fas fa-people-arrows"></i> Start connecting with people.</label>
+                            <label style={{display:disp}} id="profile_name"></label>
+                            <label style={{alignSelf:'center',display:disp}}><input style={{width:"200px", border:"black solid 1px",borderRadius:"5px"}} placeholder='Type...' ></input><button style={{borderRadius:"5px",color:"white",backgroundColor:"darkgreen",border:"darkgreen solid 1px",cursor:"pointer"}} >Send</button></label>
+                        </div>
                     </div>
                     
                     <div className='part2' style={{display:part2}} >
