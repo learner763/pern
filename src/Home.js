@@ -170,7 +170,7 @@ function Home()
                 
                 <div className='home13' >
                     <span id="youmayknow" style={{fontWeight:'bold', display:'flex', justifySelf:'center', alignSelf:'center',color:'darkgreen'}}>People you may know!</span>
-                    {info.reverse().map((a) => {
+                    {info.reverse().map((a, index) => {
                         if (index < info.length / 2) {
                             w = w + 1; // Increment w before returning
                             return (
