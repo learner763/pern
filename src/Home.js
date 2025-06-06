@@ -18,7 +18,7 @@ function Home()
     const [bgr,setbg]=useState('white')
     const [disp,setdisp]=useState("none")
 
-    let w=-1;
+    let w=0;
     function update_info(up_user,up_name,up_bio)
     {
         fetch('/save_info', {
