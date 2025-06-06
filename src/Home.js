@@ -18,6 +18,7 @@ function Home()
     const [bgr,setbg]=useState('white')
     const [disp,setdisp]=useState("none")
 
+    let w=-1;
     function update_info(up_user,up_name,up_bio)
     {
         fetch('/save_info', {
@@ -169,12 +170,14 @@ function Home()
                 
                 <div className='home13' >
                     <span id="youmayknow" style={{fontWeight:'bold', display:'flex', justifySelf:'center', alignSelf:'center',color:'darkgreen'}}>People you may know!</span>
-                    {info.map((a,index) => {
-                        if (index < info.length) {
+                    {info.reverse().map((a) => {
+                        if (index < info.length / 2) {
+                            w = w + 1; // Increment w before returning
                             return (
                                 <div className='userinfo' key={index}> 
                                     <i className='fas fa-user'></i> 
-                                    <span className='connect_people'>{info[info.indexOf(a)]}</span> 
+                                    <span className='connect_people'>{info[info.indexOf(a) + w]}</span> 
+                                    <span style={{fontWeight:'normal'}}>{info[info.indexOf(a) + w + 1]}</span>
                                     <button className='connect_buttons' ><i className='fas fa-people-arrows'></i>Connect</button>
                                 </div>
                             );
