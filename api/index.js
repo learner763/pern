@@ -37,7 +37,7 @@ app.get('/accounts', (req, res) => {
 
 // Catch-all route to serve React's index.html
 app.get('*', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'));
+    res.sendFile(path.join(buildPath, {root}));
 });
 
 // PostgreSQL Connection
