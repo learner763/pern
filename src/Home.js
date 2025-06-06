@@ -120,8 +120,8 @@ function Home()
                     icons[j].style.backgroundColor='lightgreen';
                     icons[j].style.color='darkgreen';
                 }   
-                icons[i].style.backgroundColor='darkgreen';
-                icons[i].style.color='white';
+                icons[0].style.backgroundColor='darkgreen';
+                icons[0].style.color='white';
             });
         }
     }, [info]);
