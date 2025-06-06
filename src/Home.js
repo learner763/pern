@@ -177,9 +177,9 @@ function Home()
                             w = w + 1; // Increment w before returning
                             return (
                                 <div className='userinfo' key={index}> 
-                                    <i className='fas fa-user'>{w === 3 && index === 3 ? info[info.indexOf(a) + w + 1] : null}</i>                                    
-                                    <span className='connect_people'>{info[info.indexOf(a) + w]}</span> 
-                                    <span style={{fontWeight:'normal'}}>{info[info.indexOf(a) + w + 1]}</span>
+                                    <i className='fas fa-user'></i>                                    
+                                    <span className='connect_people'>{index + w}</span> 
+                                    <span style={{fontWeight:'normal'}}>{index + w + 1}</span>
                                     <button className='connect_buttons' ><i className='fas fa-people-arrows'></i>Connect</button>
                                 </div>
                             );
