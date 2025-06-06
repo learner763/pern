@@ -72,6 +72,7 @@ function Home()
                 for(let i=0;i<data.length;i++)
                 {
                     accounts.push(data[i].name);
+                    accounts.push(data[i].bio);
                     
                     
                 }
