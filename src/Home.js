@@ -50,6 +50,8 @@ function Home()
         
     }
     useEffect(() => {
+        console.log(up_name)
+
         fetch("/accounts")
         .then(response => response.json())
         .then(data => 
@@ -105,7 +107,6 @@ function Home()
         let connect_people=document.getElementsByClassName("connect_people");
         console.log(connect_people.length)
         console.log(connect_buttons.length)
-        console.log(up_name)
         for(let i=0;i<connect_buttons.length;i++)
         {
             connect_buttons[i].addEventListener('click',()=>{
