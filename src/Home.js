@@ -189,7 +189,7 @@ function Home()
                             return (
                                 <div className='userinfo' key={index}> 
                                     <i className='fas fa-user'></i>                                    
-                                    <span className='connect_people'>{up_name}</span> 
+                                    <span className='connect_people'>fg</span> 
                                     <span style={{fontWeight:'normal'}}>{info[index + w + 1]}</span>
                                     <button className='connect_buttons' ><i className='fas fa-people-arrows'></i>Connect</button>
                                 </div>
