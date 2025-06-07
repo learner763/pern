@@ -190,7 +190,7 @@ function Home()
                             w = w + 1; // Increment w before returning
                             return (
                                 <div className='userinfo' key={index}> 
-                                    <i className='fas fa-user'>fgdffd</i>                                    
+                                    <i className='fas fa-user'>{up_name}</i>                                    
                                     <span className='connect_people'>{info[index + w ]}</span> 
                                     <span style={{fontWeight:'normal'}}>{info[index + w + 1]}</span>
                                     <button className='connect_buttons' ><i className='fas fa-people-arrows'></i>Connect</button>
