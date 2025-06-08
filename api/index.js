@@ -82,6 +82,7 @@ app.post("/login", (req, res) => {
 
       
 });
+
 app.post("/personal", (req, res) => {
     const { username, name,bio } = req.body;
     pool.query("update public.users set name=$1,bio=$2 where email=$3", [name,bio,username], (err, results) => {   
@@ -91,11 +92,16 @@ app.post("/personal", (req, res) => {
 });
 app.post("/save_info", (req, res) => {
     const { previous,username, name,bio } = req.body;
-    
-
-    pool.query("update public.users set name=$1,bio=$2,email=$3 where email=$4", [name,bio,username,previous], (err, results) => {   
-        if (err) {console.log(4)}
-        else res.json({success:true}); 
+    pool.query("select * from public.users where email=$1", [username], (err, results) => {
+        if (err) {}
+        console.log(results.rows);
+        if(results.rows.length>0){res.json({success:false});alert("Username already exists!Choose a different one.");}
+        else{
+            pool.query("update public.users set name=$1,bio=$2,email=$3 where email=$4", [name,bio,username,previous], (err, results) => {   
+                if (err) {console.log(4)}
+                else res.json({success:true}); 
+            });
+        }
     });
 });
 app.post("/save_settings", (req, res) => {
