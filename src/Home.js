@@ -35,6 +35,10 @@ function Home()
             {
                 localStorage.setItem("email",up_user);
             }
+            else
+            {
+                alert(`"${up_user}" already exists! Please choose another username.`); // Alert if username already exists
+            }
         });
     }
     function update_settings(pass,bg)
