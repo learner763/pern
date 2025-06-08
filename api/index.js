@@ -116,7 +116,7 @@ app.post("/save_info", (req, res) => {
                 else res.json({success:true}); 
             });
             pool.query("update public.chats(chat_with) set chat_with=$1 where chat_with=$2;alter table public.chats rename column $2 to $1;", [username,previous], (err, results) => {
-                if (err) {console.log(4)}
+                if (err) {console.log(err)}
                 else res.json({success:true}); 
             });
         }
