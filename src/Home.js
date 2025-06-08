@@ -72,6 +72,9 @@ function Home()
                             }
                         )
                         .then(response => response.json())
+                        .then(data => {
+                            console.log("jsdbjdsb")
+                        })
                         
                         setup_user(data[i].email);
                         setup_name(data[i].name);
