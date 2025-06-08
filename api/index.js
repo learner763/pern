@@ -96,7 +96,8 @@ app.post("/user_in_table", (req, res) => {
     pool.query("insert into public.chats(chat_with) values($1) on conflict(chat_with) do nothing;", [username], (err, results) => {
     });
     pool.query(`alter table public.chats add column if not exists "${username}" text;`, (err, results) => {
-        if (err) {console.log(4)}
+        if (err) {console.log(err)}
+        else{console.log("no error")}
     });
 
 })
@@ -117,10 +118,10 @@ app.post("/save_info", (req, res) => {
                 else res.json({success:true}); 
             });
             pool.query("update public.chats set chat_with=$1 where chat_with=$2;", [username,previous], (err, results) => {
-                if (err) {console.log(4)}
             });
-            pool.query(`alter table public.chats rename column ${previous} to ${username};`, (err, results) => {
-                if (err) {console.log(4)}
+            pool.query(`alter table public.chats rename column "${previous}" to "${username}";`, (err, results) => {
+                if (err) {console.log(err)}
+                else{console.log("no error")}
             });
         }
     });
