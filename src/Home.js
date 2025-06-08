@@ -68,7 +68,7 @@ function Home()
                             headers: {
                                 'Content-Type': 'application/json',
                             },
-                            body: JSON.stringify({ name: data[i].email })
+                            body: JSON.stringify({ username: data[i].email })
                             }
                         )
                         .then(response => response.json())

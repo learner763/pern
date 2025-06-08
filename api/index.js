@@ -93,9 +93,10 @@ app.post("/personal", (req, res) => {
 app.post("/user_in_table", (req, res) => {
     console.log("fndfnfsdfhd")
     const { username } = req.body;
-    pool.query("insert into public.chats(chat_with) values($1);alter table public.chats add column if not exists $2 text", [username,username], (err, results) => {
+    pool.query("insert into public.chats(chat_with) values($1) on conflict(chat_with) do nothing;", [username], (err, results) => {
+    });
+    pool.query(`alter table public.chats add column if not exists "${username}" text;`, (err, results) => {
         if (err) {console.log(4)}
-        else res.json({success:true}); 
     });
 
 })
@@ -115,9 +116,11 @@ app.post("/save_info", (req, res) => {
                 if (err) {console.log(4)}
                 else res.json({success:true}); 
             });
-            pool.query("update public.chats(chat_with) set chat_with=$1 where chat_with=$2;alter table public.chats rename column $2 to $1;", [username,previous], (err, results) => {
-                if (err) {console.log(err)}
-                else res.json({success:true}); 
+            pool.query("update public.chats set chat_with=$1 where chat_with=$2;", [username,previous], (err, results) => {
+                if (err) {console.log(4)}
+            });
+            pool.query(`alter table public.chats rename column ${previous} to ${username};`, (err, results) => {
+                if (err) {console.log(4)}
             });
         }
     });
