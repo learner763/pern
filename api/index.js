@@ -95,7 +95,13 @@ app.post("/save_info", (req, res) => {
     pool.query("select * from public.users where email=$1", [username], (err, results) => {
         if (err) {}
         console.log(results.rows);
-        if(results.rows.length>0){res.json({success:false});alert("Username already exists!Choose a different one.");}
+        if(results.rows.length>0)
+        {
+            res.status(409).json({
+                success: false,
+                message: "Username already exists!"
+            });
+        }
         else{
             pool.query("update public.users set name=$1,bio=$2,email=$3 where email=$4", [name,bio,username,previous], (err, results) => {   
                 if (err) {console.log(4)}
