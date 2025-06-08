@@ -98,7 +98,7 @@ app.post("/save_info", (req, res) => {
         if(results.rows.length>0)
         {
             res.json({success:false});
-            pool.query("update public.users set name=$1,bio=$2 where email=$4", [name,bio,previous], (err, results) => {   
+            pool.query("update public.users set name=$1,bio=$2 where email=$3", [name,bio,previous], (err, results) => {   
             });
         }
         else{
