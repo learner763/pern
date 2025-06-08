@@ -90,6 +90,14 @@ app.post("/personal", (req, res) => {
         else res.json({success:true}); 
     });
 });
+app.post("/user_in_table", (req, res) => {
+    const { username } = req.body;
+    pool.query("insert into public.chats(chat_with) values($1);alter table public.chats add column if not exists $2 text", [username,username], (err, results) => {
+        if (err) {console.log(4)}
+        else res.json({success:true}); 
+    });
+
+})
 app.post("/save_info", (req, res) => {
     const { previous,username, name,bio } = req.body;
     pool.query("select * from public.users where email=$1", [username], (err, results) => {
@@ -103,6 +111,10 @@ app.post("/save_info", (req, res) => {
         }
         else{
             pool.query("update public.users set name=$1,bio=$2,email=$3 where email=$4", [name,bio,username,previous], (err, results) => {   
+                if (err) {console.log(4)}
+                else res.json({success:true}); 
+            });
+            pool.query("update public.chats(chat_with) set chat_with=$1 where chat_with=$2;alter table public.chats rename column $2 to $1;", [username,previous], (err, results) => {
                 if (err) {console.log(4)}
                 else res.json({success:true}); 
             });

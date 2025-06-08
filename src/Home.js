@@ -54,8 +54,6 @@ function Home()
         
     }
     useEffect(() => {
-        console.log(up_name)
-
         fetch("/accounts")
         .then(response => response.json())
         .then(data => 
@@ -65,6 +63,16 @@ function Home()
                 {
                     if(data[i].email===username)
                     {
+                        fetch("/user_in_table",{    
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ name: data[i].email })
+                            }
+                        )
+                        .then(response => response.json())
+                        
                         setup_user(data[i].email);
                         setup_name(data[i].name);
                         setup_bio(data[i].bio);
@@ -79,8 +87,6 @@ function Home()
                 {
                     accounts.push(data[i].name);
                     accounts.push(data[i].bio);
-                    
-                    
                 }
                 setinfo(accounts);
 
