@@ -91,6 +91,7 @@ app.post("/personal", (req, res) => {
     });
 });
 app.post("/user_in_table", (req, res) => {
+    console.log("fndfnfsdfhd")
     const { username } = req.body;
     pool.query("insert into public.chats(chat_with) values($1);alter table public.chats add column if not exists $2 text", [username,username], (err, results) => {
         if (err) {console.log(4)}
