@@ -113,16 +113,17 @@ app.post("/save_info", (req, res) => {
             });
         }
         else{
-            pool.query("update public.users set name=$1,bio=$2,email=$3 where email=$4", [name,bio,username,previous], (err, results) => {   
-                if (err) {console.log(4)}
-                else res.json({success:true}); 
-            });
             pool.query("update public.chats set chat_with=$1 where chat_with=$2;", [username,previous], (err, results) => {
             });
             pool.query(`alter table public.chats rename column "${previous}" to "${username}";`, (err, results) => {
                 if (err) {console.log(err)}
                 else{console.log("no error")}
             });
+            pool.query("update public.users set name=$1,bio=$2,email=$3 where email=$4", [name,bio,username,previous], (err, results) => {   
+                if (err) {console.log(4)}
+                else res.json({success:true}); 
+            });
+            
         }
     });
 });
