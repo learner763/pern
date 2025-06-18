@@ -159,7 +159,11 @@ function Home()
                     <div className='part1' style={{display:part1}}>
                         <label style={{alignSelf:'center'}} id="connect_msg"><i class="fas fa-people-arrows"></i> Start connecting with people.</label>
                         <label style={{display:disp}} id="profile_name"></label>
-                        <label style={{alignSelf:'center',display:disp}}><input style={{width:"200px", border:"black solid 1px",borderRadius:"5px"}} placeholder='Type...' ></input><button style={{borderRadius:"5px",color:"white",backgroundColor:"darkgreen",border:"darkgreen solid 1px",cursor:"pointer"}} >Send</button></label>
+                        <label style={{ alignSelf:'center',display:disp}}>
+                            <textarea id="message" style={{resize:"none", border:"black solid 1px",borderRadius:"5px"}} placeholder='Type...' ></textarea>
+                            <button id="Send_Button" style={{borderRadius:"5px",color:"white",backgroundColor:"green",border:"darkgreen solid 1px",cursor:"pointer"}} ><i class="fas fa-paper-plane"></i>Send</button>
+                            <button id="File_Button" style={{borderRadius:"5px",color:"white",backgroundColor:"green",border:"darkgreen solid 1px",cursor:"pointer"}} ><i class="fas fa-file"></i>File</button>
+                        </label>
                     </div>
                     
                     <div className='part2' style={{display:part2}} >
