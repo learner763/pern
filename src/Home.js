@@ -96,6 +96,22 @@ function Home()
             }
         );
         let icons=document.querySelectorAll(".home11 label");
+        let refresh_people=document.getElementById("refresh_people");
+        refresh_people.addEventListener("click",function()
+        {
+            fetch("/accounts")
+            .then(response => response.json())
+            .then(data => 
+            {
+                let accounts=[]
+                for(let i=0;i<data.length;i++)
+                {
+                    accounts.push(data[i].name);
+                    accounts.push(data[i].bio);
+                }
+                setinfo(accounts);
+            })
+        })
         for(let i=0;i<icons.length;i++)
         {
             icons[i].addEventListener('click',()=>{
@@ -200,7 +216,7 @@ function Home()
                 </div>
                 
                 <div className='home13' >
-                    <span id="youmayknow" style={{fontWeight:'bold', display:'flex', justifySelf:'center', alignSelf:'center',color:'darkgreen'}}>People you may know!</span>
+                    <span id="youmayknow" style={{fontWeight:'bold', display:'flex', justifySelf:'center', alignSelf:'center',color:'darkgreen'}}><i id="refresh_people" class="fas fa-sync"></i>People you may know!</span>
                     {info.map((a, index) => {
                         console.log(up_name);
                         if (index < info.length / 2) {

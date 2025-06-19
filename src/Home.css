@@ -153,6 +153,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
+    
 }
 .part1 label{
     font-weight: bold;
@@ -165,4 +166,7 @@
     color: darkgreen;
     width: 100%;
     text-align: center;
+}
+#refresh_people{
+    cursor: pointer;
 }
